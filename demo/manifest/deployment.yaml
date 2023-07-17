@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-application
+  namespace: demo-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-application
+  template:
+    metadata:
+      labels:
+        app: demo-application
+    spec:
+      containers:
+        - name: demo-application
+          image: quay.io/pkumari/demo-app-test:latest
+          ports:
+            - containerPort: 8080
